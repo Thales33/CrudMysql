@@ -15,10 +15,18 @@ var app = express();
 var connection = mysql.createConnection({
  host       : 'localhost',
  user       : 'root',
- password   : '',
+ password   : '' 
  });
 
-//connection.connect();
+connection.connect();
+
+/* Criando Banco e Tabela */
+
+connection.query("CREATE DATABASE IF NOT EXISTS `multiform` /*!40100 DEFAULT CHARACTER SET latin1 */");
+connection.query("use multiform");
+connection.query("CREATE TABLE IF NOT EXISTS `ongs` ( `id` int(11) NOT NULL AUTO_INCREMENT, `nome` varchar(45) NOT NULL,`email` varchar(45) NOT NULL, `telefone` varchar(45) NOT NULL, `bairro` varchar(45) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1");
+
+
 
 var db = connection;
 app.use(function(req,res,next){
@@ -26,22 +34,6 @@ app.use(function(req,res,next){
     next();
 });
 
-/*
-
-
-connection.query("INSERT INTO multiform.ongs (`Nome`,`email`) VALUES ('"+'thales'+"','"+'tpsthales@gmail.com'+"')");
-
-connection.query("SELECT * FROM `multiform`.`ongs`;", function(err,rows, fields){
-var i = 0 
-while(i < rows.length){ 
-  console.log('Resultado  e :', rows[i]);
-  i++;
-}
-});
-
-
-connection.end();*/
-//Fim Banco de Dados
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

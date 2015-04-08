@@ -51,7 +51,7 @@ router.post('/add',function(req, res){
     		res.send('Erro ao adicionar Ong ao Banco de Dados')
     	} else{
     		
-   	        res.redirect('ongs/onglist');
+   	        res.redirect('/ongs/onglist');
    	        console.log('Adicionado ao Banco de Dados');
     	}
     });
