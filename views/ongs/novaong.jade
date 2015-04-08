@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    h1= title
+    form#formAddOng(name="addong",method="post",action="/ongs/add")
+        input#inputOngNome(type="text", placeholder="Nome", name="ong(nome)")
+        br
+        input#inputOngEmail(type="text", placeholder="Email", name="ong(email)")
+        br
+        input#inputOngTelefone(type="text", placeholder="Telefone", name="ong(telefone)")
+        br
+        input#inputOngBairro(type="text", placeholder="Bairro", name="ong(bairro)")
+        br
+        button#btnSubmit(type="submit") Cadastrar

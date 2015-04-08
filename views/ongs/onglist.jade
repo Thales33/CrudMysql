@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+    h1.
+        Lista de ONG's Cadastradas
+    hr
+    br
+    div(class="container")
+        table(class='table')
+            thead
+                tr
+                    td Nome
+                    td Email
+                    td Area
+                    td Telefone
+                    td Ações
+            tbody
+            each ong, i in onglist    
+                tr
+                    td #{ong.nome}
+                    td #{ong.email}
+                    td #{ong.bairro}
+                    td #{ong.telefone}
+                    td
+                        a(href="/ongs/editar/#{ong.id}")
+                            button(type='button', class='btn btn-warning btn-sm')
+                                span(class='glyphicon glyphicon-edit') Editar
+                        <space>
+                        a(href="/ongs/deleteong/#{ong.id}")
+                            button(type='button', class='btn btn-danger btn-sm')
+                                span(class='glyphicon glyphicon-remove' aria-hidden="true") Deletar
+                                
+    hr
+    a(href="/ongs") Voltar
+
+
